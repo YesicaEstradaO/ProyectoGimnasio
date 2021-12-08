@@ -1,0 +1,11 @@
+.backBtn {
+	background: #212F3D;
+	color: white;
+	margin: 0px 15px 0px 0px;
+	padding: 8px 0px;
+	width: 32px;
+	text-align: center;
+	display: inline-block;
+	text-decoration: none;
+	border-radius: 100px;
+}
