@@ -381,6 +381,12 @@ DELIMITER ;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `consultarlistaseguimiento`  AS SELECT `seguimientomedidas`.`idSeguimiento` AS `idSeguimiento`, `seguimientomedidas`.`fechaSeguimiento` AS `fechaSeguimiento`, `seguimientomedidas`.`medidas` AS `medidas`, `seguimientomedidas`.`clienteFk` AS `clienteFk`, `seguimientomedidas`.`entrenadorFk` AS `entrenadorFk`, `seguimientomedidas`.`parteCuerpoFk` AS `parteCuerpoFk` FROM `seguimientomedidas` ;
 select *  from consultarlistaseguimiento;
+create view consultarlistaseguimiento
+as
+SELECT `seguimientomedidas`.`idSeguimiento` AS `idSeguimiento`, `seguimientomedidas`.`fechaSeguimiento` AS `fechaSeguimiento`, `seguimientomedidas`.`medidas` 
+AS `medidas`, `seguimientomedidas`.`clienteFk` AS `clienteFk`, `seguimientomedidas`.`entrenadorFk` AS `entrenadorFk`, `seguimientomedidas`.`parteCuerpoFk` AS `parteCuerpoFk` FROM `seguimientomedidas` ;
+drop view consultarlistaseguimiento;
+
 insert into seguimientomedidas values(null, '2021-02-22', 34, 1092927388,1092927388,2);
 insert into partecuerpo values(null, 'piernas');
 select * from partecuerpo;
@@ -438,6 +444,12 @@ DELIMITER ;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `consultarlistadieta`  AS SELECT `dieta`.`idDieta` AS `idDieta`, `dieta`.`fechaInicio` AS `fechaInicio`, `dieta`.`fechaFin` AS `fechaFin`, `dieta`.`diaDieta` AS `diaDieta`, `dieta`.`planDieta` AS `planDieta`, `dieta`.`clienteFk` AS `clienteFk`, `dieta`.`entrenadorFk` AS `entrenadorFk` FROM `dieta` ;
 select * from consultarlistadieta;
+drop view consultarlistadieta;
+create view consultarlistadieta
+as
+SELECT `dieta`.`idDieta` AS `idDieta`, `dieta`.`fechaInicio` AS `fechaInicio`, `dieta`.`fechaFin` AS `fechaFin`, `dieta`.`diaDieta` AS `diaDieta`, 
+`dieta`.`planDieta` AS `planDieta`, `dieta`.`clienteFk` AS `clienteFk`, `dieta`.`entrenadorFk` AS `entrenadorFk` FROM `dieta` ;
+
 
 -- parte cuerpo --
 DELIMITER $$
@@ -473,6 +485,13 @@ END$$
 DELIMITER ;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `consultarlistapartecuerpo`  AS SELECT `partecuerpo`.`idParteCuerpo` AS `idParteCuerpo`, `partecuerpo`.`nombreParteCuerpo` AS `nombreParteCuerpo` FROM `partecuerpo` ;
+
+create view consultarlistapartecuerpo
+as
+SELECT `partecuerpo`.`idParteCuerpo` AS `idParteCuerpo`, `partecuerpo`.`nombreParteCuerpo` AS `nombreParteCuerpo` FROM `partecuerpo` ;
+drop view consultarlistapartecuerpo;
+select * from consultarlistapartecuerpo;
+
 
 -- alimento --
 DELIMITER $$
@@ -519,6 +538,12 @@ DELIMITER ;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `consultarlistaalimento`  AS SELECT `alimento`.`idAlimento` AS `idAlimento`, `alimento`.`nombreAlimento` AS `nombreAlimento`, `alimento`.`valorNutricional` AS `valorNutricional`, `alimento`.`aminoacidosXporcion` AS `aminoacidosXporcion`, `alimento`.`caloriasXporcion` AS `caloriasXporcion` FROM `alimento` ;
 
+create view consultarlistaalimento
+AS 
+SELECT `alimento`.`idAlimento` AS `idAlimento`, `alimento`.`nombreAlimento` AS `nombreAlimento`, `alimento`.`valorNutricional` AS `valorNutricional`, 
+`alimento`.`aminoacidosXporcion` AS `aminoacidosXporcion`, `alimento`.`caloriasXporcion` AS `caloriasXporcion` FROM `alimento` ;
+
+select * from consultarlistaalimento;
 -- rutina --
 DELIMITER $$
 CREATE PROCEDURE insertarRutina(
@@ -568,6 +593,12 @@ DELIMITER ;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `consultarrutina`  AS SELECT `rutina`.`idRutina` AS `idRutina`, `rutina`.`planRutina` AS `planRutina`, `rutina`.`intencidadRutina` AS `intencidadRutina`, `rutina`.`diaRutina` AS `diaRutina`, `rutina`.`clienteFk` AS `clienteFk`, `rutina`.`entrenadorFk` AS `entrenadorFk` FROM `rutina` ;
 
+create view consultarrutina
+AS SELECT `rutina`.`idRutina` AS `idRutina`, `rutina`.`planRutina` AS `planRutina`, `rutina`.`intencidadRutina` AS `intencidadRutina`, 
+`rutina`.`diaRutina` AS `diaRutina`, `rutina`.`clienteFk` AS `clienteFk`, `rutina`.`entrenadorFk` AS `entrenadorFk` FROM `rutina` ;
+drop view consultarrutina;
+select * from consultarrutina;
+
 -- ejercicios --
 DELIMITER $$
 CREATE PROCEDURE insertarEjercicios(
@@ -613,6 +644,11 @@ DELIMITER ;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `consultartipoejercicio`  AS SELECT `tipoejercicio`.`idTipoEjercicios` AS `idTipoEjercicios`, `tipoejercicio`.`nombreEjercicios` AS `nombreEjercicios` FROM `tipoejercicio` ;
 
+create view consultartipoejercicio
+AS SELECT `tipoejercicio`.`idTipoEjercicios` AS `idTipoEjercicios`, `tipoejercicio`.`nombreEjercicios` AS `nombreEjercicios` FROM `tipoejercicio` ;
+
+select * from consultartipoejercicio;
+
 -- contraindicaciones --
 DELIMITER $$
 CREATE PROCEDURE insertarContraindicaciones(IN `_idContraindicaciones` INT(11), IN `_descricionContraindicaciones` VARCHAR(45))
@@ -643,7 +679,13 @@ END$$
 DELIMITER ;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `consultarcontraindicaciones`  AS SELECT `contraindicaciones`.`idContraindicaciones` AS `idContraindicaciones`, `contraindicaciones`.`descricionContraindicaiones` AS `descricionContraindicaiones` FROM `contraindicaciones` ;
+drop view consultarcontraindicaciones;
+create view consultarcontraindicaciones
+as
+select`contraindicaciones`.`idContraindicaciones` AS `idContraindicaciones`, `contraindicaciones`.`descricionContraindicaiones`
+AS `descricionContraindicaiones` FROM `contraindicaciones` ;
 
+select * from consultarcontraindicaciones;
 -- OBJETIVO
 
 DELIMITER $$

@@ -56,7 +56,7 @@ else if(isset($_POST['username']))
                             confirmButtonColor:'#149c3f',
                             confirmButtonText:'Ingresar'
                         }).then((result)=>{
-                            window.location.href = '../vistas/admin/menu.php';
+                            window.location.href = '../vistas/Menus/Admin/menu.php';
                         }); 
                     </script>";
                // header('location: ../vistas/admin/menu.php');
@@ -74,7 +74,7 @@ else if(isset($_POST['username']))
                             confirmButtonColor:'#149c3f',
                             confirmButtonText:'Ingresar'
                         }).then((result)=>{
-                            window.location.href = '../vistas/entrenador/menu.php';
+                            window.location.href = '../vistas/Menus/Entrenador/menu.php';
                         }); 
                     </script>";
                 // header('location: ../vistas/entrenador/menu.php');
